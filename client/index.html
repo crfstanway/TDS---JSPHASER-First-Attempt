@@ -34,10 +34,41 @@
     }
     else {
       callFunction = consoleLogBoo();
+    };
+    function add(number1, number2) {
+      return  number1 + number2;
     }
+    add(223, 567);
+
+
+    var ages = {
+      tom: {
+        age: 27
+      },
+      george: {
+        age: 26
+      },
+      chris: {
+        age: 25
+      },
+    };
+    //check whether someones age is above a certain amount
+    function ageCheck(age1, age2) {
+      return age1 >= age2;
+    };
+    //console.log(ageCheck(ages.tom.age, 30));
+    function checkAge(personAge, age) {
+      if (personAge > age) {
+        console.log('Older');
+      }
+      else if (personAge == age) {
+        console.log('Same Age');
+      }
+      else {
+        console.log('Younger');
+      }
+    };
+    checkAge(ages.tom.age, 28);
   </script>
-
-
-
 </body>
 </hmtl>
