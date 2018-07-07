@@ -8,7 +8,36 @@
   <script>src="shooter.js"</script>
 </head>
 <body>
-  <canvas id="game">
-  </canvas>
+  <script>
+    function notAFunction() {
+      //this is a function with no function
+    }
+    function georgeTellsMeWhatAFunctionDoes() {
+      console.log('console.jog.on');
+    }
+    georgeTellsMeWhatAFunctionDoes();
+    var hello = function georgeTellsMeWhatAFunctionDoes() {
+      console.log('console.jog.on');
+    }
+    hello();
+
+    var georgeIsGay = true;
+    function consoleLogHaha() {
+      console.log('Haha')
+    };
+    function consoleLogBoo() {
+      console.log('Boo!')
+    };
+
+    if (georgeIsGay) {
+      callFunction = consoleLogHaha();
+    }
+    else {
+      callFunction = consoleLogBoo();
+    }
+  </script>
+
+
+
 </body>
 </hmtl>
