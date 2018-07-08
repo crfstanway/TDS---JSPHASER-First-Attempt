@@ -24,6 +24,9 @@
 var game = new Phaser.Game(config);
 var player;
 var cursors;
+var direction = new Phaser.Math.Vector2();
+console.log(direction);
+
 function preload ()
 {
   this.load.image('park', "assets/sprites/park_background.png");
@@ -34,33 +37,39 @@ function create ()
 {
   this.add.image(400, 300, 'park');
   cursors = this.input.keyboard.createCursorKeys();
-  player = this.add.sprite(100, 500, 'player');
-  player.angle = 180;
-  console.log(Phaser);
   this.wasd = {
     wKey: game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W),
     aKey: game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A),
     sKey: game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S),
     dKey: game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D),
   };
-  //player.x = 368;
-  console.log(cursors);
+  player = this.add.sprite(100, 500, 'player');
+  player.angle = 180;
+  player.speed = 10;
+
 }
 
 function update ()
 {
   if (cursors.left.isDown || this.wasd.aKey.isDown) {
-    player.x--;
+    direction.x -= player.speed;
   }
   if (cursors.right.isDown || this.wasd.dKey.isDown) {
-    player.x++;
+    direction.x += player.speed;
   }
   if (cursors.down.isDown || this.wasd.sKey.isDown) {
-    player.y++;
+    direction.y += player.speed;
   }
   if (cursors.up.isDown || this.wasd.wKey.isDown) {
-    player.y--;
+    direction.y -= player.speed;
   }
+
+  direction.normalize();
+  direction.scale(player.speed);
+  player.x += direction.x;
+  player.y += direction.y;
+  direction.set(0, 0);
+
 }
 
 
