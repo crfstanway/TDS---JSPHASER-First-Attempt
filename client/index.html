@@ -23,6 +23,7 @@
 
 var game = new Phaser.Game(config);
 var player;
+var cursors;
 function preload ()
 {
   this.load.image('park', "assets/sprites/park_background.png");
@@ -32,13 +33,34 @@ function preload ()
 function create ()
 {
   this.add.image(400, 300, 'park');
+  cursors = this.input.keyboard.createCursorKeys();
   player = this.add.sprite(100, 500, 'player');
   player.angle = 180;
-  //player.x = 368; 
+  console.log(Phaser);
+  this.wasd = {
+    wKey: game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W),
+    aKey: game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A),
+    sKey: game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S),
+    dKey: game.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D),
+  };
+  //player.x = 368;
+  console.log(cursors);
 }
 
 function update ()
 {
+  if (cursors.left.isDown || this.wasd.aKey.isDown) {
+    player.x--;
+  }
+  if (cursors.right.isDown || this.wasd.dKey.isDown) {
+    player.x++;
+  }
+  if (cursors.down.isDown || this.wasd.sKey.isDown) {
+    player.y++;
+  }
+  if (cursors.up.isDown || this.wasd.wKey.isDown) {
+    player.y--;
+  }
 }
 
 
