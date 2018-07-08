@@ -5,77 +5,42 @@
   <meta name="viewport" content="width=device-width initial-scale=1.0">
   <meta name ="description" content="Top-Down Shooter">
   <title>HTML Top-Down Shooter</title>
+  <script src="//cdn.jsdelivr.net/npm/phaser@3.0.0/dist/phaser.min.js"></script>
   <script>src="shooter.js"</script>
 </head>
 <body>
   <script>
-    function notAFunction() {
-      //this is a function with no function
+  var config = {
+    type: Phaser.AUTO,
+    width: 800,
+    height: 600,
+    scene: {
+        preload: preload,
+        create: create,
+        update: update
     }
-    function georgeTellsMeWhatAFunctionDoes() {
-      console.log('console.jog.on');
-    }
-    georgeTellsMeWhatAFunctionDoes();
-    var hello = function georgeTellsMeWhatAFunctionDoes() {
-      console.log('console.jog.on');
-    }
-    hello();
+};
 
-    var georgeIsGay = true;
-    function consoleLogHaha() {
-      console.log('Haha')
-    };
-    function consoleLogBoo() {
-      console.log('Boo!')
-    };
+var game = new Phaser.Game(config);
+var player;
+function preload ()
+{
+  this.load.image('park', "assets/sprites/park_background.png");
+  this.load.image('player', "assets/sprites/player.png");
+}
 
-    if (georgeIsGay) {
-      callFunction = consoleLogHaha();
-    }
-    else {
-      callFunction = consoleLogBoo();
-    };
-    function add(number1, number2) {
-      return  number1 + number2;
-    }
-    add(223, 567);
+function create ()
+{
+  this.add.image(400, 300, 'park');
+  player = this.add.sprite(100, 500, 'player');
+  player.angle = 180;
+  //player.x = 368; 
+}
 
+function update ()
+{
+}
 
-    var ages = {
-      tom: {
-        age: 27
-      },
-      george: {
-        age: 26
-      },
-      chris: {
-        age: 25
-      },
-    };
-    //check whether someones age is above a certain amount
-    function ageCheck(age1, age2) {
-      return age1 >= age2;
-    };
-    //console.log(ageCheck(ages.tom.age, 30));
-    function checkAge(personAge, age) {
-      if (personAge > age) {
-        console.log('Older');
-      }
-      else if (personAge == age) {
-        console.log('Same Age');
-      }
-      else {
-        console.log('Younger');
-      }
-    };
-    checkAge(ages.tom.age, 28);
-
-    
-    var foodTypes = ["onions", "carrots", "muffins"];
-    for (var i = 0; i < foodTypes.length; i++) {
-      console.log(foodTypes[i]);
-      //console.log(i);
-    };
 
 
   </script>
