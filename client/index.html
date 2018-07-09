@@ -36,6 +36,7 @@ var timer;
 var timetext;
 var enemy1;
 var enemy_spawn = false;
+var enemy_destroy = false;
 // console.log(game);
 
 function preload ()
@@ -43,6 +44,7 @@ function preload ()
   this.load.image('park', "assets/sprites/park_background.png");
   this.load.image('player', "assets/sprites/player.png");
   this.load.image('enemy1', "assets/sprites/enemy_prac.png");
+  console.log(this);
 }
 
 function create ()
@@ -90,9 +92,14 @@ function update ()
 // console.log(player.x, player.y);
 // console.log(Phaser.Math.Angle.Between(player.x, player.y,mouse.x, mouse.y));
   timetext.setText('time: ' + timer.toString());
-  if (timer > 5000 && enemy_spawn == false) {
-    this.add.sprite(150, 50, 'enemy1');
+  if (timer > 5000 && enemy_spawn == false && enemy_destroy == false) {
+    enemy1 = this.add.sprite(150, 50, 'enemy1');
     enemy_spawn = true;
+  }
+  if (timer > 10000 && enemy_spawn == true) {
+    enemy1.destroy();
+    enemy_spawn = false;
+    enemy_destroy = true;
   }
 }
 
